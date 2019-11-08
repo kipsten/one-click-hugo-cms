@@ -15,7 +15,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Intro Blurb", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "player" 
+  - name: "players" 
     label: "Player" 
     folder: "site/content/players" 
     create: true 
@@ -27,8 +27,8 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Year", name: "year", widget: "select", options: ["freshman", "sophomore", "junior", "senior"]}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Is 15", name: "is15", widget: "boolean", default: true}
-  - name: "employee" 
-    label: "Employee" 
+  - name: "employees" 
+    label: "Employees" 
     folder: "site/content/employees" 
     identifier_field: email
     create: true 
@@ -47,8 +47,8 @@ collections: # A list of collections the CMS should be able to edit
         name: "skills"
         widget: "list"
         required: false
-  - name: "announcement" 
-    label: "Announcement" 
+  - name: "announcements" 
+    label: "Announcements" 
     folder: "site/content/announcements" 
     identifier_field: slug
     create: true 
@@ -58,7 +58,10 @@ collections: # A list of collections the CMS should be able to edit
       - label: "Author"
         name: "author"
         widget: "relation"
-        collection: employee
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
       - label: "Category"
         name: "category"
         widget: "select"
@@ -71,8 +74,49 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "resource" 
-    label: "Resource" 
+  - name: "insights" 
+    label: "Insights" 
+    folder: "site/content/insights" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: "Column"
+        name: "column"
+        widget: "relation"
+        collection: "insightColumns"
+        searchFields: ["title"]
+        valueField: "slug"
+        displayFields: ["title"]
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "insightColumns" 
+    label: "Insight Columns" 
+    folder: "site/content/insightColumns" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Summary", name: "summary", widget: "text", required: false}    
+  - name: "resources" 
+    label: "Resources" 
     folder: "site/content/resources" 
     identifier_field: slug
     create: true 
@@ -83,6 +127,88 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Links", name: "links", widget: "list", required: false}
       - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "resources" 
+    label: "Resources" 
+    folder: "site/content/resources" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "clients" 
+    label: "Clients" 
+    folder: "site/content/clients" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - label: Organization
+        name: organization
+        widget: relation
+        collection: "organizations"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+      - label: Contacts
+        name: contacts
+        widget: relation
+        multiple: true
+        collection: "clientContacts"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+      - label: Team
+        name: team
+        widget: relation
+        multiple: true
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "clientContacts" 
+    label: "Client Contacts" 
+    folder: "site/content/clientContacts" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Role", name: "role", widget: "string", required: false}
+  - name: "clientOrganizations" 
+    label: "Client Organizations" 
+    folder: "site/content/clientOrganizations" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - label: Contacts
+          name: contacts
+          widget: relation
+          multiple: true
+          collection: "clientContacts"
+          searchFields: ["name"]
+          valueField: "name"
+          displayFields: ["name"]
+        - label: Team
+          name: team
+          widget: relation
+          multiple: true
+          collection: "employees"
+          searchFields: ["name"]
+          valueField: "slug"
+          displayFields: ["name"]
+        - {label: "Links", name: "links", widget: "list", required: false}
+        - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
   - name: "pages"
     label: "Pages"
     files:
