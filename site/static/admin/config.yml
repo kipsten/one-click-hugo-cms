@@ -5,48 +5,28 @@ media_folder: "site/static/img" # Folder where user uploaded files should go
 public_folder: "img"
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
-    folder: "site/content/post" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Intro Blurb", name: "description", widget: "text"}
-      - {label: "Image", name: "image", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
-  - name: "players" 
-    label: "Player" 
-    folder: "site/content/players" 
-    create: true 
-    fields: 
-      - {label: "Name", name: "title", widget: "string"}
-      - {label: "Birthday", name: "date", widget: "datetime"}
-      - {label: "Age", name: "age", widget: "number"}
-      # - {label: "Emergency Contact", name: "emergency_contact", widget: "string", required: false}
-      - {label: "Year", name: "year", widget: "select", options: ["freshman", "sophomore", "junior", "senior"]}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Is 15", name: "is15", widget: "boolean", default: true}
-  - name: "employees" 
-    label: "Employees" 
-    folder: "site/content/employees" 
-    identifier_field: email
-    create: true 
-    fields: 
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "First Name", name: "firstName", widget: "string"}
-      - {label: "Last Name", name: "lastName", widget: "string"}
-      - {label: "Email", name: "email", widget: "string"}
-      - {label: "Phone", name: "phone", widget: "string", required: false}
-      - {label: "Title", name: "title", widget: "string", required: false}
-      - {label: "Department", name: "department", widget: "string", options: ["Technology", "Delivery", "Creative", "Operations"], required: false}
-      - {label: "Office", name: "office", widget: "select", options: ["New York", "Mumbai"]}
-      - {label: "Photo", name: "photo", widget: "file", required: false}
-      - label: "Skills"
-        name: "skills"
-        widget: "list"
-        required: false
+  # - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
+  #   label: "Post" # Used in the UI, ie.: "New Post"
+  #   folder: "site/content/post" # The path to the folder where the documents are stored
+  #   create: true # Allow users to create new documents in this collection
+  #   fields: # The fields each document in this collection have
+  #     - {label: "Title", name: "title", widget: "string"}
+  #     - {label: "Publish Date", name: "date", widget: "datetime"}
+  #     - {label: "Intro Blurb", name: "description", widget: "text"}
+  #     - {label: "Image", name: "image", widget: "image", required: false}
+  #     - {label: "Body", name: "body", widget: "markdown"}
+  # - name: "players" 
+  #   label: "Player" 
+  #   folder: "site/content/players" 
+  #   create: true 
+  #   fields: 
+  #     - {label: "Name", name: "title", widget: "string"}
+  #     - {label: "Birthday", name: "date", widget: "datetime"}
+  #     - {label: "Age", name: "age", widget: "number"}
+  #     # - {label: "Emergency Contact", name: "emergency_contact", widget: "string", required: false}
+  #     - {label: "Year", name: "year", widget: "select", options: ["freshman", "sophomore", "junior", "senior"]}
+  #     - {label: "Body", name: "body", widget: "markdown"}
+  #     - {label: "Is 15", name: "is15", widget: "boolean", default: true}
   - name: "announcements" 
     label: "Announcements" 
     folder: "site/content/announcements" 
@@ -74,114 +54,6 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "insights" 
-    label: "Insights" 
-    folder: "site/content/insights" 
-    identifier_field: slug
-    create: true 
-    fields: 
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - label: "Column"
-        name: "column"
-        widget: "relation"
-        collection: "insightColumns"
-        searchFields: ["title"]
-        valueField: "slug"
-        displayFields: ["title"]
-      - label: "Author"
-        name: "author"
-        widget: "relation"
-        collection: "employees"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-  - name: "insightColumns" 
-    label: "Insight Columns" 
-    folder: "site/content/insightColumns" 
-    identifier_field: slug
-    create: true 
-    fields: 
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - label: "Author"
-        name: "author"
-        widget: "relation"
-        collection: "employees"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - {label: "Summary", name: "summary", widget: "text", required: false}    
-  - name: "resources" 
-    label: "Resources" 
-    folder: "site/content/resources" 
-    identifier_field: slug
-    create: true 
-    fields: 
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Links", name: "links", widget: "list", required: false}
-      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
-  - name: "resources" 
-    label: "Resources" 
-    folder: "site/content/resources" 
-    identifier_field: slug
-    create: true 
-    fields: 
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Links", name: "links", widget: "list", required: false}
-      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
-  - name: "projects" 
-    label: "Projects" 
-    folder: "site/content/projects" 
-    identifier_field: slug
-    create: true 
-    fields: 
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - label: Client
-        name: client
-        widget: relation
-        collection: "clients"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - {label: "Is Active", name: "isActive", widget: "boolean", default: true}
-      - {label: "Summary", name: "summary", widget: "text", required: false}
-      - label: Organization
-        name: organization
-        widget: relation
-        collection: "organizations"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - label: Contacts
-        name: contacts
-        widget: relation
-        multiple: true
-        collection: "clientContacts"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - label: Team
-        name: team
-        widget: relation
-        multiple: true
-        collection: "employees"
-        searchFields: ["name"]
-        valueField: "slug"
-        displayFields: ["name"]
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Links", name: "links", widget: "list", required: false}
-      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
   - name: "clients" 
     label: "Clients" 
     folder: "site/content/clients" 
@@ -235,85 +107,215 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Summary", name: "summary", widget: "text", required: false}
       - label: Contacts
-          name: contacts
-          widget: relation
-          multiple: true
-          collection: "clientContacts"
-          searchFields: ["name"]
-          valueField: "slug"
-          displayFields: ["name"]
-        - label: Team
-          name: team
-          widget: relation
-          multiple: true
-          collection: "employees"
-          searchFields: ["name"]
-          valueField: "slug"
-          displayFields: ["name"]
-        - {label: "Links", name: "links", widget: "list", required: false}
-        - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
-  - name: "pages"
-    label: "Pages"
-    files:
-      - file: "site/content/_index.md"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Subtitle, name: subtitle, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: "Blurb", name: blurb, widget: object, fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Intro", name: intro, widget: object, fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Products", name: products, widget: list, fields: [
-              {label: "Image", name: "image", widget: "image"},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Values", name: "values", widget: "object", fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
-      - file: "site/content/contact/_index.md"
-        label: "Contact Page"
-        name: "contact"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Logo, name: logo, widget: image}
-          - {label: Body, name: body, widget: markdown}
-          - label: Contact Entries
-            name: contact_entries
-            widget: list
-            fields:
-              - label: Heading
-                name: heading
-                widget: string
-              - label: Text
-                name: text
-                widget: text
-      - file: "site/content/products/_index.md"
-        label: "Products Page"
-        name: "products"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
-      - file: "site/content/values/_index.md"
-        label: "Values Page"
-        name: "values"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - label: Values
-            name: values
-            widget: list
-            fields:
-              - {label: Heading, name: heading, widget: string}
-              - {label: Text, name: text, widget: text}
-              - {label: Image, name: imageUrl, widget: image}
+        name: contacts
+        widget: relation
+        multiple: true
+        collection: "clientContacts"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - label: Team
+        name: team
+        widget: relation
+        multiple: true
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "employees" 
+    label: "Employees" 
+    folder: "site/content/employees" 
+    identifier_field: email
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "First Name", name: "firstName", widget: "string"}
+      - {label: "Last Name", name: "lastName", widget: "string"}
+      - {label: "Email", name: "email", widget: "string"}
+      - {label: "Phone", name: "phone", widget: "string", required: false}
+      - {label: "Title", name: "title", widget: "string", required: false}
+      - {label: "Department", name: "department", widget: "string", options: ["Technology", "Delivery", "Creative", "Operations"], required: false}
+      - {label: "Office", name: "office", widget: "select", options: ["New York", "Mumbai"]}
+      - {label: "Photo", name: "photo", widget: "file", required: false}
+      - label: "Skills"
+        name: "skills"
+        widget: "list"
+        required: false
+  - name: "insights" 
+    label: "Insights" 
+    folder: "site/content/insights" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: "Column"
+        name: "column"
+        widget: "relation"
+        collection: "insightColumns"
+        searchFields: ["title"]
+        valueField: "slug"
+        displayFields: ["title"]
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "insightColumns" 
+    label: "Insight Columns" 
+    folder: "site/content/insightColumns" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Summary", name: "summary", widget: "text", required: false} 
+  - name: "projects" 
+    label: "Projects" 
+    folder: "site/content/projects" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: Client
+        name: client
+        widget: relation
+        collection: "clients"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Is Active", name: "isActive", widget: "boolean", default: true}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - label: Organization
+        name: organization
+        widget: relation
+        collection: "organizations"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - label: Contacts
+        name: contacts
+        widget: relation
+        multiple: true
+        collection: "clientContacts"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - label: Team
+        name: team
+        widget: relation
+        multiple: true
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}     
+  - name: "resources" 
+    label: "Resources" 
+    folder: "site/content/resources" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "tools" 
+    label: "Tools" 
+    folder: "site/content/tools" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  
+  
+  # - name: "pages"
+  #   label: "Pages"
+  #   files:
+  #     - file: "site/content/_index.md"
+  #       label: "Home Page"
+  #       name: "home"
+  #       fields:
+  #         - {label: Title, name: title, widget: string}
+  #         - {label: Subtitle, name: subtitle, widget: string}
+  #         - {label: Image, name: image, widget: image}
+  #         - {label: "Blurb", name: blurb, widget: object, fields: [
+  #             {label: "Heading", name: "heading", widget: string},
+  #             {label: "Text", name: "text", widget: "text"}]}
+  #         - {label: "Intro", name: intro, widget: object, fields: [
+  #             {label: "Heading", name: "heading", widget: string},
+  #             {label: "Text", name: "text", widget: "text"}]}
+  #         - {label: "Products", name: products, widget: list, fields: [
+  #             {label: "Image", name: "image", widget: "image"},
+  #             {label: "Text", name: "text", widget: "text"}]}
+  #         - {label: "Values", name: "values", widget: "object", fields: [
+  #             {label: "Heading", name: "heading", widget: string},
+  #             {label: "Text", name: "text", widget: "text"}]}
+  #     - file: "site/content/contact/_index.md"
+  #       label: "Contact Page"
+  #       name: "contact"
+  #       fields:
+  #         - {label: Title, name: title, widget: string}
+  #         - {label: Logo, name: logo, widget: image}
+  #         - {label: Body, name: body, widget: markdown}
+  #         - label: Contact Entries
+  #           name: contact_entries
+  #           widget: list
+  #           fields:
+  #             - label: Heading
+  #               name: heading
+  #               widget: string
+  #             - label: Text
+  #               name: text
+  #               widget: text
+  #     - file: "site/content/products/_index.md"
+  #       label: "Products Page"
+  #       name: "products"
+  #       fields:
+  #         - {label: Title, name: title, widget: string}
+  #         - {label: Image, name: image, widget: image}
+  #         - {label: Heading, name: heading, widget: string}
+  #         - {label: Description, name: description, widget: string}
+  #         - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
+  #         - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+  #         - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
+  #         - {label: Full_image, name: full_image, widget: image}
+  #         - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+  #     - file: "site/content/values/_index.md"
+  #       label: "Values Page"
+  #       name: "values"
+  #       fields:
+  #         - {label: Title, name: title, widget: string}
+  #         - {label: Image, name: image, widget: image}
+  #         - label: Values
+  #           name: values
+  #           widget: list
+  #           fields:
+  #             - {label: Heading, name: heading, widget: string}
+  #             - {label: Text, name: text, widget: text}
+  #             - {label: Image, name: imageUrl, widget: image}
