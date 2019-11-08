@@ -1,8 +1,8 @@
 {
-    "name": "{{ .title }}",
-    "slug" : "{{ .slug }}",
-    "description" : "{{ .description }}",
-    "tags" : "{{ .tags }}",
-    "links" : "{{ .links }}",
-    "files" : "{{ .links }}"
+    "name": "{{ .Params.title }}",
+    "slug" : "{{ .Params.slug }}",
+    "description" : "{{ .Params.description }}",
+    "tags" : "{{ .Params.tags }}",
+    "links" : "{{ .Params.links }}",
+    "files" : "{{ .Params.files }}"
 }

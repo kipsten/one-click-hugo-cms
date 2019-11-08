@@ -1,10 +1,10 @@
 {
-    "name": "{{ .title }}",
-    "slug" : "{{ .slug }}",
-    "firstName" : "{{ .firstName }}",
-    "lastName" : "{{ .lastName }}",
-    "email" : "{{ .email }}",
-    "phone" : "{{ .phone }}",
-    "title" : "{{ .title }}",
-    "department" : "{{ .department }}"
+    "name": "{{ .Params.name }}",
+    "slug" : "{{ .Params.slug }}",
+    "firstName" : "{{ .Params.firstName }}",
+    "lastName" : "{{ .Params.lastName }}",
+    "email" : "{{ .Params.email }}",
+    "phone" : "{{ .Params.phone }}",
+    "title" : "{{ .Params.title }}",
+    "department" : "{{ .Params.department }}"
 }
