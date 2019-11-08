@@ -21,11 +21,68 @@ collections: # A list of collections the CMS should be able to edit
     create: true 
     fields: 
       - {label: "Name", name: "title", widget: "string"}
-      # - {label: "Birthday", name: "date", widget: "datetime"}
-      # - {label: "Age", name: "age", widget: "number"}
+      - {label: "Birthday", name: "date", widget: "datetime"}
+      - {label: "Age", name: "age", widget: "number"}
       # - {label: "Emergency Contact", name: "emergency_contact", widget: "string", required: false}
-      # - {label: "Year", name: "year", widget: "string"}
+      - {label: "Year", name: "year", widget: "select", options: ["freshman", "sophomore", "junior", "senior"]}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Is 15", name: "is15", widget: "boolean", default: true}
+  - name: "employee" 
+    label: "Employee" 
+    folder: "site/content/employees" 
+    identifier_field: email
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "First Name", name: "firstName", widget: "string"}
+      - {label: "Last Name", name: "lastName", widget: "string"}
+      - {label: "Email", name: "email", widget: "string"}
+      - {label: "Phone", name: "phone", widget: "string", required: false}
+      - {label: "Title", name: "title", widget: "string", required: false}
+      - {label: "Department", name: "department", widget: "string", options: ["Technology", "Delivery", "Creative", "Operations"], required: false}
+      - {label: "Office", name: "office", widget: "select", options: ["New York", "Mumbai"]}
+      - {label: "Photo", name: "photo", widget: "file", required: false}
+      - label: "Skills"
+        name: "skills"
+        widget: "list"
+        required: false
+  - name: "announcement" 
+    label: "Announcement" 
+    folder: "site/content/announcements" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: employee
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: 
+        - "Benefits & Payroll"
+        - "Company Events"
+        - "Facilities"
+        - "Professional Development"
+        - "Staffing & Recruiting"
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "resource" 
+    label: "Resource" 
+    folder: "site/content/resources" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
   - name: "pages"
     label: "Pages"
     files:

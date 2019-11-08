@@ -1,0 +1,9 @@
+{
+    "title": "{{ .title }}",
+    "slug" : "{{ .slug }}",
+    "author" : "{{ .author }}",
+    "category" : "{{ .category }}",
+    "date" : "{{ .date }}",
+    "summary" : "{{ .summary }}",
+    "body" : "{{ .body }}"
+}

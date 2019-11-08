@@ -1,0 +1,10 @@
+{
+    "name": "{{ .title }}",
+    "slug" : "{{ .slug }}",
+    "firstName" : "{{ .firstName }}",
+    "lastName" : "{{ .lastName }}",
+    "email" : "{{ .email }}",
+    "phone" : "{{ .phone }}",
+    "title" : "{{ .title }}",
+    "department" : "{{ .department }}"
+}
