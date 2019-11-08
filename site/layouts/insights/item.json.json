@@ -1,0 +1,8 @@
+{
+    "title": "{{ .Params.title }}",
+    "slug" : "{{ .Params.slug }}",
+    "author" : "{{ .Params.author }}",
+    "date" : "{{ .Params.date }}",
+    "summary" : "{{ .Params.summary }}",
+    "body" : "{{ .Params.body }}"
+}

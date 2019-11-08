@@ -139,6 +139,49 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Links", name: "links", widget: "list", required: false}
       - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
+  - name: "projects" 
+    label: "Projects" 
+    folder: "site/content/projects" 
+    identifier_field: slug
+    create: true 
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - label: Client
+        name: client
+        widget: relation
+        collection: "clients"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Is Active", name: "isActive", widget: "boolean", default: true}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - label: Organization
+        name: organization
+        widget: relation
+        collection: "organizations"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - label: Contacts
+        name: contacts
+        widget: relation
+        multiple: true
+        collection: "clientContacts"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - label: Team
+        name: team
+        widget: relation
+        multiple: true
+        collection: "employees"
+        searchFields: ["name"]
+        valueField: "slug"
+        displayFields: ["name"]
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Links", name: "links", widget: "list", required: false}
+      - {label: "Files", name: "files", widget: "file", multiple: true, required: false}
   - name: "clients" 
     label: "Clients" 
     folder: "site/content/clients" 
@@ -153,7 +196,7 @@ collections: # A list of collections the CMS should be able to edit
         widget: relation
         collection: "organizations"
         searchFields: ["name"]
-        valueField: "name"
+        valueField: "slug"
         displayFields: ["name"]
       - label: Contacts
         name: contacts
@@ -161,7 +204,7 @@ collections: # A list of collections the CMS should be able to edit
         multiple: true
         collection: "clientContacts"
         searchFields: ["name"]
-        valueField: "name"
+        valueField: "slug"
         displayFields: ["name"]
       - label: Team
         name: team
@@ -197,7 +240,7 @@ collections: # A list of collections the CMS should be able to edit
           multiple: true
           collection: "clientContacts"
           searchFields: ["name"]
-          valueField: "name"
+          valueField: "slug"
           displayFields: ["name"]
         - label: Team
           name: team
