@@ -20,7 +20,10 @@ module.exports = merge(common, {
     quiet: false,
     open: true,
     historyApiFallback: {
-      rewrites: [{from: /./, to: "404.html"}]
+      rewrites: [{from: /./, to: 
+        // "404.html"
+        "404.json"
+      }]
     }
   },
 

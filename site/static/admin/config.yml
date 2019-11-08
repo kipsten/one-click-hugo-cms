@@ -15,6 +15,17 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Intro Blurb", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "player" 
+    label: "Player" 
+    folder: "site/content/players" 
+    create: true 
+    fields: 
+      - {label: "Name", name: "title", widget: "string"}
+      # - {label: "Birthday", name: "date", widget: "datetime"}
+      # - {label: "Age", name: "age", widget: "number"}
+      # - {label: "Emergency Contact", name: "emergency_contact", widget: "string", required: false}
+      # - {label: "Year", name: "year", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "pages"
     label: "Pages"
     files:
